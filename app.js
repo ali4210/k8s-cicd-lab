@@ -2,16 +2,14 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+// Intentionally broken code
 app.get('/', (req, res) => {
+  // This will cause an error
+  nonExistentFunction();
   res.json({
-    message: 'Hello from Kubernetes CI/CD Pipeline!',
-    version: process.env.APP_VERSION || '1.1.0',
-    timestamp: new Date().toISOString()
+    message: 'This version is broken!',
+    version: '2.0.0'
   });
-});
-
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'healthy' });
 });
 
 app.listen(port, '0.0.0.0', () => {
